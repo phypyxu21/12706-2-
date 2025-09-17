@@ -55,6 +55,6 @@ def get_liner_thickness(core_diameter):
         return 0.4
     else:
         return 0.6
-#具有绕包金属层的电缆
+
 
 
