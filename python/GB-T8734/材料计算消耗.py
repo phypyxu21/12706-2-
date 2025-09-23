@@ -6,13 +6,13 @@ Woven_Cross_Coefficient=1.02#编织交叉系数
 Density_of_Steel_Tape=7.85#钢带密度
 Number_of_Steel_Tape_Wrapping_Layers=2#钢带铠装层数
 Steel_Tape_Overlap_Rate=0.5#钢带铠装重叠率
-density_of_insulating_material=1.5#绝缘材料密度
+density_of_insulating_material=0.95#绝缘材料密度
 cabling_lay_ratio=1.02#成缆绞入系数
 densityOfSheathingMaterial=1.5#护套材料密度
 #非紧压铜的成缆绞入系数
 non_cabling_lay_ratio=1.004
 #绕包材料的密度g/cm3
-densityOfWrappingMaterial=1.5
+densityOfWrappingMaterial=0.95
 #层数
 Number_of_Layers=2
 #绕包材料的重叠率
@@ -88,7 +88,7 @@ def Steel_Tape_Armoring(Outer_Diameter_Before_Armoring,Nominal_Thickness_of_Stee
 
 #绝缘	
 def insulation(conductor_outer_diameter_before_extrusion_insulation,nominal_thickness_of_insulation_layer,number_of_insulated_cores):
-    insulation=np.round((conductor_outer_diameter_before_extrusion_insulation+nominal_thickness_of_insulation_layer)*nominal_thickness_of_insulation_layer*3.1416*density_of_insulating_material*number_of_insulated_cores*cabling_lay_ratio,3)
+    insulation=np.round((conductor_outer_diameter_before_extrusion_insulation+1.05*nominal_thickness_of_insulation_layer)*nominal_thickness_of_insulation_layer*1.05*3.1416*density_of_insulating_material*number_of_insulated_cores*cabling_lay_ratio,3)
     return insulation
 #内护套
 def innerSheath(conductorOuterDiameterBeforeSheathingExtrusion,nominalThicknessOfSheathLayer):
@@ -109,7 +109,7 @@ def copperCoreConsumptionOfNonCompactedConductor(nominalCrossSectionOfConductor,
 #绕包带
 #加判断判断重叠还是间隙绕包
 def wrappingTape(outerDiameterBeforeWrapping,wrappingTapeThickness):
-    wrappingTape=np.round((outerDiameterBeforeWrapping+wrappingTapeThickness)*Number_of_Layers*wrappingTapeThickness*3.1416*densityOfWrappingMaterial/(1-WrappingMaterialOverlapRate))
+    wrappingTape=np.round((outerDiameterBeforeWrapping+wrappingTapeThickness)*Number_of_Layers*wrappingTapeThickness*3.1416*densityOfWrappingMaterial/(1-WrappingMaterialOverlapRate),3)
     return wrappingTape
 
 
@@ -123,3 +123,13 @@ def micaTape(diameter_the_wrap,micaTapeThickness,S,numberofinsaluation):
         micaTape=np.round((diameter_the_wrap+micaTapeThickness*micaNumberofLayers)*micaTapeThickness*micaNumberofLayers*3.1416*Density_of_mica_bands*(1+micaOverlapRate)*numberofinsaluation*cabling_lay_ratio,3)
     return micaTape
 
+
+
+  
+    
+
+
+
+
+
+    
