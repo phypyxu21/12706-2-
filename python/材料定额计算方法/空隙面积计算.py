@@ -46,9 +46,9 @@ def two_large_one_small_void_ratio_calc(D,d,R):
 if __name__ == "__main__":
     print("===== 两大一小空隙面积计算样例 =====")
     # 设置样例参数
-    D_example = 6  # 大圆直径
+    D_example = 9  # 大圆直径
     d_example = 6   # 小圆直径
-    R_example = 12.96  # 成缆直径
+    R_example = 18  # 成缆直径
     
     print(f"样例参数：大圆直径={D_example}, 小圆直径={d_example}, 成缆直径={R_example}")
     
